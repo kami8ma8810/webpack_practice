@@ -9,9 +9,14 @@ module.exports = {
   module: {
     rules: [{
       test: /\.css/,
+      //※loaderは下から実行される（css-loader→style-loader）
       use: [{
-        loader: 'css-loader',
-      }, ],
+          loader: 'style-loader',
+        },
+        {
+          loader: 'css-loader',
+        },
+      ],
     }, ],
   },
 }
