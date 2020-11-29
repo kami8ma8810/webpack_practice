@@ -5,7 +5,6 @@ const {
   CleanWebpackPlugin
 } = require('clean-webpack-plugin');
 
-
 module.exports = {
   entry: './src/javascripts/main.js',
   output: {
@@ -23,7 +22,16 @@ module.exports = {
           loader: 'css-loader', //CSS読み込み
         },
       ],
-    }, ],
+    }, {
+      test: /\.(png|jpg)/,
+      use: [{
+        loader: 'file-loader',
+        options: {
+          esModule: false,
+          name: 'images/[name].[ext]',
+        },
+      }, ],
+    }],
   },
   plugins: [
     new MiniCssExtractPlugin({
