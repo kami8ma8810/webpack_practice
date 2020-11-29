@@ -1,4 +1,6 @@
 const path = require('path');
+const miniCssExtractPlugin = require('mini-css-extract-plugin');
+
 
 module.exports = {
   entry: './src/index.js',
@@ -9,14 +11,17 @@ module.exports = {
   module: {
     rules: [{
       test: /\.css/,
-      //※loaderは下から実行される（css-loader→style-loader）
+      //※loaderはuse内の下から順に実行される
       use: [{
-          loader: 'style-loader',
+          loader: miniCssExtractPlugin.loader, //main.cssの作成
         },
         {
-          loader: 'css-loader',
+          loader: 'css-loader', //CSS読み込み
         },
       ],
     }, ],
   },
+  plugins: [
+    new miniCssExtractPlugin(),
+  ],
 }
