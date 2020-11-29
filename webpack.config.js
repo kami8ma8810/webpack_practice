@@ -7,10 +7,10 @@ const {
 
 
 module.exports = {
-  entry: './src/index.js',
+  entry: './src/javascripts/main.js',
   output: {
     path: Path.resolve(__dirname, './dist'), //絶対パスで書く設定
-    filename: 'js/main.js', //distに出力される名前の変更
+    filename: 'javascripts/main.js', //distに出力される名前の変更
   },
   module: {
     rules: [{
@@ -27,10 +27,10 @@ module.exports = {
   },
   plugins: [
     new MiniCssExtractPlugin({
-      filename: './style/my.css',
+      filename: './stylesheets/main.css',
     }),
     new HtmlWebpackPlugin({
-      template: './src/index.html',
+      template: './src/templates/index.html',
     }),
     new CleanWebpackPlugin(),
   ],
